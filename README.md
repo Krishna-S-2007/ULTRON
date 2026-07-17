@@ -1,6 +1,6 @@
-# IntelDesk — Autonomous AI Investigation Workspace
+# Agent ULTRON — Autonomous AI Investigation Workspace
 
-**IntelDesk** is an enterprise-grade AI investigation platform that autonomously searches, scrapes, extracts, and synthesizes intelligence from across the web. The system takes a user objective and runs an iterative, multi-stage pipeline to gather verified facts, detect contradictions, resolve knowledge gaps, and generate a comprehensive markdown report.
+**Agent ULTRON** is not just another chatbot—it is an actual multi-LLM intelligent live data extractor and enterprise-grade AI investigation platform. It autonomously searches, scrapes, extracts, and synthesizes intelligence from across the web. The system takes a user objective and runs an iterative, multi-stage pipeline to gather verified facts, detect contradictions, resolve knowledge gaps, and generate a comprehensive markdown report.
 
 ## 🚀 Features
 - **Autonomous Multi-Stage Pipeline**: From mission planning to report generation without user intervention.
