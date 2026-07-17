@@ -152,10 +152,8 @@ def _merge_parsed_data(state: InvestigationState, data: dict):
         conf = data["confidence"]
         # Enforce exact confidence math based only on credibility
         auth = conf.get("authority", 50)
-        agr = conf.get("agreement", 50)
         rec = conf.get("recency", 50)
-        penalty = conf.get("contradictions_penalty", 0)
-        conf["overall"] = max(0, min(100, int((auth + agr + rec) / 3) - penalty))
+        conf["overall"] = max(0, min(100, int((auth + rec) / 2)))
         state.confidence = conf
 
     # Force auto-save by reassigning lists
