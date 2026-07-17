@@ -64,7 +64,7 @@ async def call_llm(
             return result
         except Exception as e:
             last_error = e
-            print(f"[llm_client] Model {attempt_model} failed: {e}. Trying next...")
+            print(f"[llm_client] Model {attempt_model} failed with {type(e).__name__}: {repr(e)}. Trying next...")
             continue
 
     raise RuntimeError(f"All models failed. Last error: {last_error}")
