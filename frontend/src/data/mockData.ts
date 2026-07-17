@@ -14,7 +14,7 @@ import type {
 export const mockInvestigation: Investigation = {
   id: "INV-8841",
   objective: "Investigate Tesla ESG risks and battery supply chain exposure",
-  type: "company",
+  type: "ultra",
   status: "running",
   createdAt: new Date(Date.now() - 1000 * 60 * 6).toISOString(),
   confidence: 87,
