@@ -71,7 +71,7 @@ async def run_planner(state: InvestigationState) -> None:
         }
 
     # --- Apply hard caps ---
-    plan["search_queries"] = plan["search_queries"][:5]  # max 5 queries
+    plan["search_queries"] = plan["search_queries"][:7]  # max 7 queries
     if not plan["search_queries"]:
         plan["search_queries"] = [state.query]           # min 1 query
 

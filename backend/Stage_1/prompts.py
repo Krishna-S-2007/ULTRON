@@ -28,8 +28,8 @@ Respond with this exact structure:
 }
 
 Rules:
-- search_queries: Generate 5-8 highly targeted and distinct queries.
-- IMPORTANT DIVERSIFICATION: If the user's query can be satisfied with diversified content, you MUST generate explicit search queries covering each of these source categories: Official Sources (e.g. .gov, .mil), Academic Sources (e.g. .edu, journals), News Coverage, Legal Filings, Financial Data, and Social Sentiment. If a category is completely irrelevant to the objective, you may skip it.
+- search_queries: Generate 7-10 highly targeted and distinct queries.
+- MANDATORY DIVERSIFICATION: You MUST generate explicit search queries covering ALL 6 of these source categories for EVERY investigation, without exception: 1. Official Sources (e.g. site:.gov, site:.mil), 2. Academic Sources (e.g. site:.edu, journals), 3. News Coverage, 4. Legal Filings, 5. Financial Data, and 6. Social Sentiment.
 - Each query must be distinct and cover a different angle.
 - dimensions: 2-5 investigation angles (e.g. "technical", "financial", "regulatory")
 - Do NOT include any text outside the JSON object.
