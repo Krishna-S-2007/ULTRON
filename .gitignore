@@ -23,3 +23,12 @@ backend/reports/*.md
 # OS / Logs
 .DS_Store
 *.log
+
+# Ignore Obsidian and Agent folders
+.obsidian/
+.agent/
+.agents/
+
+# Ignore all markdown files except README.md
+*.md
+!README.md
