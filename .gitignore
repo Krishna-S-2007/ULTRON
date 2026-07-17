@@ -1,0 +1,25 @@
+# Node dependencies
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+
+# Python dependencies
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Environment Variables
+.env
+.env.*
+*.local
+
+# Investigation State & Output (Temp JSON and MD)
+backend/Stage_0/states/*.json
+backend/reports/*.md
+
+# OS / Logs
+.DS_Store
+*.log
