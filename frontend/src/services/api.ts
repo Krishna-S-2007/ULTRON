@@ -57,6 +57,14 @@ export async function getInvestigations(): Promise<Investigation[]> {
   return apiFetch<Investigation[]>(`${BASE}/investigations`);
 }
 
+// ─── DELETE /api/investigation/{id} ────────────────────────────────────────
+
+export async function deleteInvestigation(investigationId: string): Promise<void> {
+  await apiFetch(`${BASE}/investigation/${investigationId}`, {
+    method: "DELETE",
+  });
+}
+
 // ─── GET /api/investigation/{id}/evidence ──────────────────────────────────
 
 export async function getEvidence(investigationId: string): Promise<EvidenceItem[]> {

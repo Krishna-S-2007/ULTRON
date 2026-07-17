@@ -177,3 +177,29 @@ def get_all_investigations() -> list[dict]:
     # Sort by created_at descending
     results.sort(key=lambda x: x["createdAt"], reverse=True)
     return results
+
+
+def delete_investigation(investigation_id: str) -> bool:
+    """Delete an investigation from memory, its JSON file, and its report."""
+    deleted = False
+    if investigation_id in investigations:
+        del investigations[investigation_id]
+        deleted = True
+    
+    filepath = os.path.join(STATES_DIR, f"{investigation_id}.json")
+    if os.path.exists(filepath):
+        try:
+            os.remove(filepath)
+            deleted = True
+        except Exception as e:
+            print(f"[state] Error deleting state file: {e}")
+            
+    # Also delete the report if it exists
+    try:
+        report_path = os.path.join(os.path.dirname(__file__), "..", "reports", f"{investigation_id}.md")
+        if os.path.exists(report_path):
+            os.remove(report_path)
+    except Exception as e:
+        print(f"[state] Error deleting report file: {e}")
+            
+    return deleted

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Radar, ArrowRight, Plus } from "lucide-react";
+import { Radar, ArrowRight, Plus, Trash2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
-import { getInvestigations } from "@/services/api";
+import { getInvestigations, deleteInvestigation } from "@/services/api";
 import type { Investigation } from "@/types/investigation";
 
 const statusVariant = { running: "info", completed: "success", failed: "danger", paused: "warning" } as const;
@@ -13,6 +13,19 @@ const statusVariant = { running: "info", completed: "success", failed: "danger",
 export default function InvestigationsPage() {
   const [history, setHistory] = useState<Investigation[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const handleDelete = async (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!window.confirm("Are you sure you want to delete this investigation?")) return;
+    try {
+      await deleteInvestigation(id);
+      setHistory((prev) => prev.filter((inv) => inv.id !== id));
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete investigation");
+    }
+  };
 
   useEffect(() => {
     let active = true;
@@ -68,6 +81,14 @@ export default function InvestigationsPage() {
                     {inv.status}
                   </Badge>
                   <span className="font-mono text-xs text-ink-muted">{inv.confidence}%</span>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8 text-ink-muted hover:bg-red-500/10 hover:text-red-500 z-10 relative"
+                    onClick={(e) => handleDelete(e, inv.id)}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
                   <ArrowRight className="h-3.5 w-3.5 text-ink-faint transition-transform group-hover:translate-x-0.5" />
                 </div>
               </CardContent>

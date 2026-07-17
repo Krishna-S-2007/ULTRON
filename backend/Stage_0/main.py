@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from models import InvestigateRequest, InvestigateResponse
-from state import create_investigation, get_investigation, get_all_investigations, InvestigationState
+from state import create_investigation, get_investigation, get_all_investigations, delete_investigation, InvestigationState
 from Stage_1.planner import run_planner
 from Stage_1.llm_client import call_llm, MODELS
 from Stage_2.search import run_search
@@ -130,6 +130,16 @@ async def get_investigation_endpoint(investigation_id: str):
         "confidence": state.confidence.get("overall", 0),
         "stages":     _make_pipeline_stages(state),
     }
+
+
+# ─── DELETE /api/investigation/{id} ──────────────────────────────────────────
+
+@app.delete("/api/investigation/{investigation_id}")
+async def delete_investigation_endpoint(investigation_id: str):
+    success = delete_investigation(investigation_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Investigation not found")
+    return {"status": "deleted"}
 
 
 # ─── GET /api/investigation/{id}/evidence ────────────────────────────────────
