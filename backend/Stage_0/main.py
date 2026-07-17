@@ -86,6 +86,13 @@ def _domain_to_source_type(domain: str) -> str:
     return "blog"
 
 
+# ─── GET /api/ping (Keep-Alive for Render) ───────────────────────────────────
+
+@app.get("/api/ping")
+async def ping_endpoint():
+    return {"status": "ok", "message": "ULTRON backend is awake"}
+
+
 # ─── Stage 0: POST /api/investigate ──────────────────────────────────────────
 
 @app.post("/api/investigate", response_model=InvestigateResponse)
