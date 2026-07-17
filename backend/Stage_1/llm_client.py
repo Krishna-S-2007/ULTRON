@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", "Stage_0", ".env"))
 
-FREELLM_BASE_URL = "http://localhost:3001/v1/chat/completions"
+FREELLM_BASE_URL = os.getenv("FREELLM_BASE_URL", "http://localhost:3001/v1/chat/completions")
 FREELLM_API_KEY = os.getenv("FREELLM_API_KEY", "")
 
 # Model tiers — ordered by intelligence/cost.
